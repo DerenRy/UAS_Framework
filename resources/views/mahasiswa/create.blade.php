@@ -6,6 +6,9 @@
     <title>Tambah Mahasiswa</title>
 </head>
 <body>
+    <a href="{{ route('mahasiswa.index') }}" class="inline-block bg-gray-500 text-white px-4 py-2 rounded-md mb-4 hover:bg-gray-600">
+      Kembali ke Daftar Mahasiswa
+    </a>
     <h1>Form Input Data Mahasiswa</h1>
 
     @if(session('success'))

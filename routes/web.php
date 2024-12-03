@@ -29,10 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::get('mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
+Route::delete('mahasiswa/{id}', [MahasiswaController::class, 'destroy'])->name('mahasiswa.destroy');
 Route::post('/mahasiswa/store', [MahasiswaController::class, 'store'])->name('mahasiswa.store');
-Route::get('/mahasiswa/create', function () {
-    return view('mahasiswa.create');
-});
+Route::get('mahasiswa/create', [MahasiswaController::class, 'create'])->name('mahasiswa.create');
+
 
 
 require __DIR__.'/auth.php';
