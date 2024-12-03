@@ -2,6 +2,11 @@
     Tambah Mahasiswa
 </a>
 
+<a href="{{ route('mahasiswa.exportExcel') }}" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg shadow-md mb-6 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+        Export ke Excel
+    </a>
+
+
 <table class="min-w-full bg-white border border-gray-300 rounded-lg">
     <thead>
         <tr>

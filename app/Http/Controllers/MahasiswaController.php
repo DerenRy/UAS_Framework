@@ -4,6 +4,9 @@
 
 namespace App\Http\Controllers;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MahasiswaExport;
+
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
@@ -26,7 +29,7 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'npm' => 'required',
+            'npm' => 'required|numeric',
             'nama' => 'required',
             'prodi' => 'required',
         ]);
@@ -43,5 +46,10 @@ class MahasiswaController extends Controller
         $mahasiswa->delete();  // Hapus data mahasiswa
 
         return redirect()->route('mahasiswa.index')->with('success', 'Data mahasiswa berhasil dihapus');
+    }
+    public function exportExcel()
+    {
+        // Ekspor data mahasiswa ke Excel
+        return Excel::download(new MahasiswaExport, 'daftar_mahasiswa.xlsx');
     }
 }
