@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaController;
+use App\Exports\MahasiswaExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +36,8 @@ Route::get('mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.
 Route::delete('mahasiswa/{id}', [MahasiswaController::class, 'destroy'])->name('mahasiswa.destroy');
 Route::post('/mahasiswa/store', [MahasiswaController::class, 'store'])->name('mahasiswa.store');
 Route::get('mahasiswa/create', [MahasiswaController::class, 'create'])->name('mahasiswa.create');
-Route::get('mahasiswa/export-excel', [MahasiswaController::class, 'exportExcel'])->name('mahasiswa.exportExcel');
-
+Route::get('mahasiswa/export', function () {
+    return Excel::download(new MahasiswaExport, 'mahasiswa.xlsx');
+})->name('mahasiswa.export');
 
 require __DIR__.'/auth.php';
